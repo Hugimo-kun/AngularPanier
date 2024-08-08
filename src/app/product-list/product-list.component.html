@@ -1,0 +1,33 @@
+<div class="row">
+  <div *ngFor="let produit of produits" class="col-3">
+    <div class="border border-1 rounded">
+      <img [src]="produit.image" alt="{{ produit.nom }}" class="w-50" />
+      <p>{{ produit.prixHT }} €</p>
+      @if (!quantiteTemp[produit.id]) {
+      <p>0</p>
+      } @else {
+      <p>{{ quantiteTemp[produit.id] }}</p>
+      }
+      <div class="mb-2">
+        <button
+          (click)="removeOneQuantity(produit.id)"
+          class="btn btn-danger text-white"
+        >
+          -
+        </button>
+        <button
+          (click)="addOneQuantity(produit.id)"
+          class="btn btn-success text-white"
+        >
+          +
+        </button>
+      </div>
+      <button
+        (click)="addQuantitiesToCart(produit)"
+        class="btn btn-primary w-100"
+      >
+        Ajouter
+      </button>
+    </div>
+  </div>
+</div>
